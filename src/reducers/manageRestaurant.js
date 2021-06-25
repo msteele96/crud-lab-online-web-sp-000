@@ -1,6 +1,6 @@
 import cuid from 'cuid';
 
-export default function manageRestaurants(state = [], action) {
+export default function manageRestaurants(state = { restaurants: [], reviews: [] }, action) {
     
     switch (action.type) {
         case 'ADD_RESTAURANT':
@@ -8,10 +8,11 @@ export default function manageRestaurants(state = [], action) {
                 text: action.text,
                 id: cuid()
             }
-            return state.concat(restaurant)
+            return {...state, restaurants: [...state.restaurants, restaurant] }
 
-        case '':
-            return
+        case 'DELETE_RESTAURANT':
+            return {...state, restaurants: [...state.restaurants.filter(restaurant => restaurant.id !== action.id)]}
+
         default:
             return state
     }
