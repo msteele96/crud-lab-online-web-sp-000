@@ -4,16 +4,14 @@ import Restaurant from './Restaurant';
 class Restaurants extends Component {
 
   renderRestaurants = () => {
-    console.log(this.props.restaurants.restaurants)
-    return this.props.restaurants.restaurants.map(restaurant => <Restaurant key={restaurant.id} restaurant={restaurant} deleteRestaurant={this.props.deleteRestaurant}/>)
+    const array = this.props.restaurants
+    return array.map(restaurant => <Restaurant key={restaurant.id} restaurant={restaurant} deleteRestaurant={this.props.deleteRestaurant}/>)
   }
 
   render() {
-    debugger
     return(
       <ul>
-        {/* {this.renderRestaurants()} */}
-        {this.props.restaurants.restaurants.map(restaurant => <Restaurant key={restaurant.id} restaurant={restaurant} deleteRestaurant={this.props.deleteRestaurant}/>)}
+        {this.renderRestaurants()}
       </ul>
     );
   }
